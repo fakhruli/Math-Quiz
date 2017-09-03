@@ -12,8 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.app.mathquiz.adapter.RecyclerViewAdapter;
+import com.app.mathquiz.model.FetchUser;
 import com.app.mathquiz.model.Score;
 
 import java.util.ArrayList;
@@ -56,6 +58,20 @@ public class ScoringActivity extends AppCompatActivity {
         btnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Retrofit retrofit = new RetrofitClient().getClient();
+                Api api = retrofit.create(Api.class);
+                Call<FetchUser> reset = api.gameControl("reset");
+                reset.enqueue(new Callback<FetchUser>() {
+                    @Override
+                    public void onResponse(Call<FetchUser> call, Response<FetchUser> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<FetchUser> call, Throwable throwable) {
+
+                    }
+                });
                 overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 startActivity(new Intent(ScoringActivity.this,MainGuru.class));
                 finish();

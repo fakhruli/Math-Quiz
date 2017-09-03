@@ -86,5 +86,14 @@
             android:background="@drawable/bg_pilihan"
             android:text="Jawab C" />
 
+        <ImageView
+            android:id="@+id/jwb_5"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_pilihan"
+            android:text="Jawab C" />
+
     </LinearLayout>
 </ScrollView>

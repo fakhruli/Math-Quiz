@@ -26,6 +26,9 @@ public class Soal {
     @SerializedName("jawab4")
     @Expose
     private String jawab4;
+    @SerializedName("jawab5")
+    @Expose
+    private String jawab5;
     @SerializedName("benar")
     @Expose
     private String benar;
@@ -76,6 +79,14 @@ public class Soal {
 
     public void setJawab4(String jawab4) {
         this.jawab4 = jawab4;
+    }
+
+    public String getJawab5() {
+        return jawab5;
+    }
+
+    public void setJawab5(String jawab5) {
+        this.jawab5 = jawab5;
     }
 
     public String getBenar() {

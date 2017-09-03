@@ -78,6 +78,8 @@ public class MainSiswa extends AppCompatActivity {
     ImageView jwb3;
     @BindView(R.id.jwb_4)
     ImageView jwb4;
+    @BindView(R.id.jwb_5)
+    ImageView jwb5;
 
     TextView txtKonfirm, txt_msg;
     ImageView imgBenar;
@@ -184,7 +186,7 @@ public class MainSiswa extends AppCompatActivity {
         }
     };
 
-    @OnClick({R.id.jwb_1, R.id.jwb_2, R.id.jwb_3, R.id.jwb_4})
+    @OnClick({R.id.jwb_1, R.id.jwb_2, R.id.jwb_3, R.id.jwb_4, R.id.jwb_5})
     public void submit(ImageView img) {
         switch (img.getId()) {
             case R.id.jwb_1:
@@ -198,6 +200,9 @@ public class MainSiswa extends AppCompatActivity {
                 break;
             case R.id.jwb_4:
                 jwb = 4;
+                break;
+            case R.id.jwb_5:
+                jwb = 5;
                 break;
         }
         if (Integer.parseInt(no) != noSoal) jwb = 0;
@@ -258,6 +263,9 @@ public class MainSiswa extends AppCompatActivity {
             Glide.with(context)
                     .load(AppConfig.BASE_URL + soalDiscover.getSoal().get(noSoal).getJawab4())
                     .into(jwb4);
+            Glide.with(context)
+                    .load(AppConfig.BASE_URL + soalDiscover.getSoal().get(noSoal).getJawab5())
+                    .into(jwb5);
 
             txtScore.setText("No.Soal: " + String.valueOf(noSoal + 1));
         } else {

@@ -62,6 +62,8 @@ public class GuruStartActivity extends AppCompatActivity {
     ImageView jwb3;
     @BindView(R.id.jwb_4)
     ImageView jwb4;
+    @BindView(R.id.jwb_5)
+    ImageView jwb5;
 
     TextView txtKonfirm, txtbenar;
     ImageView imgBenar, jwbbenar;
@@ -76,7 +78,10 @@ public class GuruStartActivity extends AppCompatActivity {
         pangkat = 1;
         kurang = 0;
 
+        soalDiscover = null;
+
         getSoal();
+        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -143,6 +148,7 @@ public class GuruStartActivity extends AppCompatActivity {
             String title = intent.getExtras().getString("title");
             if (title.equals("guru")) {
                 if (intent.getExtras().getString("message").equals("benar")) {
+                    Log.d(TAG, "onReceive: Benar");
                     getJawab(String.valueOf(noSoal));
                     txtKonfirm.setText("Jawaban Yang Dipilih Benar");
                     if (noSoal == max_player) btn_next.setText("Akhiri Permainan");
@@ -207,6 +213,9 @@ public class GuruStartActivity extends AppCompatActivity {
             Glide.with(context)
                     .load(AppConfig.BASE_URL + soalDiscover.getSoal().get(noSoal).getJawab4())
                     .into(jwb4);
+            Glide.with(context)
+                    .load(AppConfig.BASE_URL + soalDiscover.getSoal().get(noSoal).getJawab5())
+                    .into(jwb5);
             txtNourut.setText(String.valueOf(noSoal + 1));
             txtNama.setText(AppConfig.nama_siswa.get(noSoal));
         } else {
@@ -225,10 +234,9 @@ public class GuruStartActivity extends AppCompatActivity {
 
                 if (soalDiscover == null) {
                     soalDiscover = response.body();
+                    Log.d(TAG, "onResponse: " + response.body().getSoal().get(0).getSoal());
                     maxSoal = soalDiscover.getSoal().size();
                 }
-
-                Log.d(TAG, "onResponse: " + soalDiscover);
             }
 
             @Override

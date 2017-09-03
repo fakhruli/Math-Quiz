@@ -56,9 +56,8 @@ public class MainGuru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guru_main);
         ButterKnife.bind(MainGuru.this);
-
+        data.clear();
         getAllDataSiswa();
-
         adapter = new RecyclerViewAdapter(this,data);
         LinearLayoutManager lm = new LinearLayoutManager(this);
         rcv.setAdapter(adapter);
@@ -67,17 +66,12 @@ public class MainGuru extends AppCompatActivity {
 
     @OnClick({R.id.btnMulai,R.id.btnReset})
     public void submit(Button btn) {
-        Intent intent = null;
         switch (btn.getId()) {
             case R.id.btnMulai :
                 if (nama.size() == 0) {
                     Toast.makeText(MainGuru.this,"Belum ada pemain yang bergabung",Toast.LENGTH_SHORT).show();
                 } else {
                     mulaiGame();
-                    intent = new Intent(MainGuru.this,GuruStartActivity.class);
-                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
-                    startActivity(intent);
-                    finish();
                 }
                 break;
             case R.id.btnReset :
@@ -204,5 +198,8 @@ public class MainGuru extends AppCompatActivity {
 
             }
         });
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+        startActivity(new Intent(MainGuru.this,GuruStartActivity.class));
+        finish();
     }
 }
