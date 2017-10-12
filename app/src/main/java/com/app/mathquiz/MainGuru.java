@@ -56,7 +56,7 @@ public class MainGuru extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.guru_main);
         ButterKnife.bind(MainGuru.this);
-        data.clear();
+
         getAllDataSiswa();
         adapter = new RecyclerViewAdapter(this,data);
         LinearLayoutManager lm = new LinearLayoutManager(this);
@@ -198,6 +198,7 @@ public class MainGuru extends AppCompatActivity {
 
             }
         });
+        data.clear();
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         startActivity(new Intent(MainGuru.this,GuruStartActivity.class));
         finish();
